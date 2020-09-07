@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from "react-router-dom";
 import axios from 'axios';
 
 const Movie = (props) => {
   const [movie, setMovie] = useState();
- 
+  console.log('movieeeeeee', movie);
+  const params = useParams();
+  // console.log('idddddddddd', id);
+
   useEffect(() => {
     const id = 1;
     // change ^^^ that line and grab the id from the URL
@@ -13,6 +17,7 @@ const Movie = (props) => {
         .get(`http://localhost:5000/api/movies/${id}`)
         .then(response => {
           setMovie(response.data);
+          console.log("data from Movie componen: ", response.data);
         })
         .catch(error => {
           console.error(error);
